@@ -104,8 +104,14 @@ client.on("message", async (msg) => {
           msg.from,
           "Olá! Tudo bem? Escolha uma opção a baixo para continuarmos seu atendimento."
         );
-        await client.sendMessage(msg.from, "[1] Realizar Agendamento\n[3] Finalizar Atendimento");
+        await client.sendMessage(msg.from, "[1] Realizar Agendamento\n[2] Finalizar Atendimento");
+        if(msg.body === "1" || msg.from.includes("Agendamento")){
+          await client.sendMessage(msg.from, "Estamos lhe agendando...");
+          
+        }
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(`Error ao enviar mensagem: ${err}`)
+    }
   }
 });
